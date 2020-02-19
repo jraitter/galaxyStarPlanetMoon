@@ -1,14 +1,15 @@
 import mongoose from "mongoose";
-import Star from "../models/Star.js";
+import Planet from "../models/Planet.js";
 
 //NOTE the repository is the connection to your DB at that collection
-const _repository = mongoose.model("Star", Star);
-class StarService {
+const _repository = mongoose.model("Planet", Planet);
+class PlanetService {
   async getAll() {
     // let data = await _repository.find({});
     // return data
     return await _repository.find({})
-      .populate("galaxyId", "title");
+      .populate("galaxyId", "title")
+      .populate("starId", "title");
   }
 
   async findById(id) {
@@ -31,6 +32,6 @@ class StarService {
   }
 }
 
-const starService = new StarService();
-export default starService;
+const planetService = new PlanetService();
+export default planetService;
 

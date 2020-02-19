@@ -37,10 +37,14 @@ server.use(bp.json());
 //NOTE we have to import access to our controllers
 import GalaxiesController from "./controllers/GalaxiesController.js";
 import StarsController from "./controllers/StarsController.js";
+import PlanetsController from "./controllers/PlanetsController.js";
+import MoonsController from "./controllers/MoonsController.js";
 
 //NOTE remember the forward slash at the start of your path!
 server.use("/api/galaxies", new GalaxiesController().router);
 server.use("/api/stars", new StarsController().router);
+server.use("/api/planets", new PlanetsController().router);
+server.use("/api/moons", new MoonsController().router);
 
 //NOTE Everything below this line always stays the same
 
