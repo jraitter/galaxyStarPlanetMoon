@@ -15,6 +15,10 @@ class StarService {
     return await _repository.findById(id);
   }
 
+  async getByGalaxyId(id) {
+    return await _repository.find({ galaxyId: id });
+  }
+
   // create, from create in controller is a post
   async create(rawData) {
     return await _repository.create(rawData);

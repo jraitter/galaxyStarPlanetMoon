@@ -1,5 +1,6 @@
 import express from "express";
 import StarService from "../services/StarService.js";
+import PlanetService from "../services/PlanetService.js";
 
 export default class StarsController {
   constructor() {
@@ -7,6 +8,7 @@ export default class StarsController {
       .Router()
       .get("", this.getAll)
       .get("/:id", this.getById)
+      .get("/:id/planets", this.getPlanetByStarId)
       .post("", this.create)
       .put("/:id", this.edit)
       .delete("/:id", this.delete);
@@ -24,6 +26,15 @@ export default class StarsController {
   async getById(req, res, next) {
     try {
       let data = await StarService.findById(req.params.id);
+      res.send(data);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async getPlanetByStarId(req, res, next) {
+    try {
+      let data = await PlanetService.getByStarId(req.params.id);
       res.send(data);
     } catch (error) {
       next(error);

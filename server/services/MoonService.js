@@ -17,6 +17,10 @@ class MoonService {
     return await _repository.findById(id);
   }
 
+  async getByPlanetId(id) {
+    return await _repository.find({ planetId: id }).populate("planetId");
+  }
+
   // create, from create in controller is a post
   async create(rawData) {
     return await _repository.create(rawData);
