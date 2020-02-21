@@ -6,7 +6,11 @@ const _repository = mongoose.model("Alien", Alien);
 
 class AliensService {
   async getAll() {
-    return await _repository.find({});
+    return await _repository.find({})
+      .populate("galaxies", "title")
+      .populate("stars", "title")
+      .populate("planets", "title")
+      .populate("moons", "title");
   }
 
   async findById(id) {
