@@ -39,12 +39,14 @@ import GalaxiesController from "./controllers/GalaxiesController.js";
 import StarsController from "./controllers/StarsController.js";
 import PlanetsController from "./controllers/PlanetsController.js";
 import MoonsController from "./controllers/MoonsController.js";
+import AliensController from "./controllers/AliensController.js";
 
 //NOTE remember the forward slash at the start of your path!
 server.use("/api/galaxies", new GalaxiesController().router);
 server.use("/api/stars", new StarsController().router);
 server.use("/api/planets", new PlanetsController().router);
 server.use("/api/moons", new MoonsController().router);
+server.use("/api/aliens", new AliensController().router);
 
 //NOTE Everything below this line always stays the same
 
